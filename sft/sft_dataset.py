@@ -41,7 +41,7 @@ class SFTDataset(Dataset):
 
             answer_id = tokenizer.encode(answer_text)
             if (len(answer_id) > self.answer_max_len):
-                answer_id = prompt_id[:self.prompt_max_len]
+                answer_id = answer_id[:self.answer_max_len]
             input_id = prompt_id + answer_id
             labels = [self.tokenizer.pad_token_id] * len(prompt_id) + answer_id
             pad_len = self.max_length - len(input_id)
